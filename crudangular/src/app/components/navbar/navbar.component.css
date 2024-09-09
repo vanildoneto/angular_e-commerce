@@ -1,0 +1,90 @@
+* {
+    margin: 0;
+}
+
+
+.logo {
+  display: flex;
+  align-items: center
+}
+
+nav {
+    font-family: "Inconsolata", monospace;
+    background-color: #161005; /* Cor de fundo escura */
+    padding: 2px 20px; /* Espaçamento interno */
+    position: fixed; /* Fixa o navbar no topo */
+    width: 100%; /* Preenche toda a largura da tela */
+    top: 0; /* Fixa no topo */
+    left: 0;
+    z-index: 1000; /* Garantir que o navbar fique acima de outros elementos */
+    display: flex;
+    justify-content: space-between; /* Espaça os itens */
+    align-items: center;
+    box-sizing: border-box; /* Certifica que padding é incluído nas dimensões do navbar */
+  }
+  
+  /* Limitar o espaço dos links de navegação */
+  nav ul {
+    list-style-type: none; /* Remove marcadores da lista */
+    margin: 0;
+    padding: 0;
+    display: flex; /* Alinha os itens horizontalmente */
+    justify-content: flex-end; /* Alinha os itens ao lado direito */
+    flex-grow: 1; /* Preenche o espaço à esquerda dos links */
+    flex-wrap: wrap; /* Permite que os itens quebrem em várias linhas se necessário */
+  }
+  
+  /* Estilo para os itens da lista */
+  nav ul li {
+    margin-right: 20px; /* Espaçamento entre os links */
+    white-space: nowrap; /* Impede a quebra de palavras nos links */
+  }
+  
+  nav ul li:last-child {
+    margin-right: 0; /* Remove o espaçamento do último item */
+  }
+  
+  /* Estilo para os links */
+  nav a {
+    color: white; /* Cor do texto */
+    text-decoration: none; /* Remove o sublinhado */
+    font-size: 16px; /* Tamanho da fonte */
+    transition: color 0.3s; /* Efeito suave ao passar o mouse */
+    cursor: pointer;
+  }
+  
+  /* Efeito de hover nos links */
+  nav a:hover {
+    color: #f0a500; /* Muda a cor ao passar o mouse */
+  }
+  
+  /* Estilo para o logo/texto no lado esquerdo */
+  nav .logo {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    white-space: nowrap; /* Evita que o logo quebre */
+  }
+  
+  /* Responsivo - ajusta o layout em telas menores */
+  @media (max-width: 768px) {
+    nav {
+      align-items: flex-end;
+    }
+  
+    nav ul li {
+      margin-bottom: 10px; /* Espaçamento vertical entre links */
+    }
+  
+    nav ul li:last-child {
+      margin-bottom: 0;
+    }
+
+
+    h1 {
+      display: none;
+    }
+  }
+  
