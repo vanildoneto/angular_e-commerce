@@ -15,8 +15,8 @@ export class ApiprodutosService {
     return this.http.get<any[]>(this.apiUrl);  // Corrigido 'htpp' para 'http'
   }
 
-  adicionarProdutos(formData: FormData): Observable<any> {
-    return this.http.post<any>(this.apiUrl, formData);  // Corrigido 'FormData' para 'formData'
+  adicionarProdutos(produto: { nome_produto: string; tipo: string; marca: string; imagem_url: string; }): Observable<any> {
+    return this.http.post<any>(this.apiUrl, produto);
   }
   
 }

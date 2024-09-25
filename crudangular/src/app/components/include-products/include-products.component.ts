@@ -23,7 +23,7 @@ export class IncludeProductsComponent implements OnInit {
       nome_produto: ['', Validators.required],
       tipo: ['', Validators.required],
       marca: ['', Validators.required],
-      imagem_url: [null, Validators.required]  // Corrigido para 'imagem_url'
+      imagem_url: ['', Validators.required]  // Corrigido para 'imagem_url'
     });
   }
 
@@ -31,43 +31,27 @@ export class IncludeProductsComponent implements OnInit {
 
   onSubmit() {
     if (this.produtoForm.valid) {
-      const formData = new FormData();
-      formData.append('nome_produto', this.produtoForm.get('nome_produto')?.value);
-      formData.append('tipo', this.produtoForm.get('tipo')?.value);
-      formData.append('marca', this.produtoForm.get('marca')?.value);
+        const produto = {
+            nome_produto: this.produtoForm.get('nome_produto')?.value,
+            tipo: this.produtoForm.get('tipo')?.value,
+            marca: this.produtoForm.get('marca')?.value,
+            imagem_url: this.produtoForm.get('imagem_url')?.value,
+        };
 
-      // Corrigido para adicionar o arquivo em vez do nome do arquivo
-      const file = this.produtoForm.get('imagem_url')?.value;
-      if (file) {
-        formData.append('imagem_url', file, file.name);
-      }
-
-      formData.forEach((value, key) => {
-        console.log(key, value);
-      });
-      
-      // Enviar os dados para o backend
-      this.apiService.adicionarProdutos(formData).subscribe({
-        next: (response) => {
-          console.log('Produto adicionado com sucesso!', response);
-          this.router.navigate(['/']);
-        },
-        error: (error) => {
-          console.error('Erro ao adicionar produto:', error);
-        },
-        complete: () => {
-          console.log('Operação completa.');
-        }
-      });
+        // Enviar os dados para o backend
+        this.apiService.adicionarProdutos(produto).subscribe({
+            next: (response) => {
+                console.log('Produto adicionado com sucesso!', response);
+                this.router.navigate(['/']); // Redirecionar após sucesso
+            },
+            error: (error) => {
+                console.error('Erro ao adicionar produto:', error);
+            },
+            complete: () => {
+                console.log('Operação completa.');
+            }
+        });
     }
   }
 
-  onFileSelected(event: any) {
-    const file = event.target.files[0];
-    if (file) {
-      this.produtoForm.patchValue({
-        imagem_url: file 
-      });
-    }
-  }
 }

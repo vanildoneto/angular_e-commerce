@@ -14,7 +14,7 @@
   .product-card {
     font-family: "Inconsolata", monospace;
     background: #000000;
-    border: groove 5px rgb(14, 113, 163);
+    border:outset 5px #f0a500;
     border-radius: 8px;
     overflow: hidden;
     text-align: center;

@@ -19,7 +19,7 @@
         
         <div>
           <label for="imagem_url">Imagem do Produto:</label>
-          <input id="imagem_url" type="file" (change)="onFileSelected($event)">
+          <input id="imagem_url" formControlName="imagem_url" type="text" placeholder="Insira o link da imagem">
         </div>
         
         <button type="submit" [disabled]="produtoForm.invalid">Salvar Produto</button>
